@@ -63,4 +63,10 @@ vim.opt.scrolloff = 10
 -- See `:help 'confirm'`
 vim.opt.confirm = true
 
+-- enable folding based on indents
+-- "zc" -> close, "zo" -> open
+vim.opt.foldmethod = 'indent'
+-- prevent automatic folding
+vim.opt.foldlevelstart = 99
+
 -- vim: ts=2 sts=2 sw=2 et
