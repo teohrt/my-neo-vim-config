@@ -3,5 +3,10 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-    { import = 'custom.plugins.none-ls' },
+  { import = 'custom.plugins.none-ls' },
+  {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+  },
 }
