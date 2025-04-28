@@ -29,23 +29,31 @@ vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
---  See `:help wincmd` for a list of all window commands
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+-- These conflict with harpoon remapping - I'll just get used to the native window commands
+--
+-- vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+-- vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+-- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+-- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- Harpoon keymaps
-local mark = require("harpoon.mark")
-local ui = require("harpoon.ui")
+local mark = require 'harpoon.mark'
+local ui = require 'harpoon.ui'
+vim.keymap.set('n', '<leader>a', mark.add_file, { desc = 'Add current file to harpoon' })
+vim.keymap.set('n', '<leader>e', ui.toggle_quick_menu, { desc = 'Edit harpoon list' })
 
-vim.keymap.set("n", "<leader>a", mark.add_file)
-vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
-
-vim.keymap.set("n", "<C-h>", function() ui.nav_file(1) end)
-vim.keymap.set("n", "<C-j>", function() ui.nav_file(2) end)
-vim.keymap.set("n", "<C-k>", function() ui.nav_file(3) end)
-vim.keymap.set("n", "<C-l>", function() ui.nav_file(4) end)
+vim.keymap.set('n', '<C-h>', function()
+  ui.nav_file(1)
+end)
+vim.keymap.set('n', '<C-j>', function()
+  ui.nav_file(2)
+end)
+vim.keymap.set('n', '<C-k>', function()
+  ui.nav_file(3)
+end)
+vim.keymap.set('n', '<C-l>', function()
+  ui.nav_file(4)
+end)
 
 -- NOTE: Some terminals have colliding keymaps or are not able to send distinct keycodes
 -- vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
@@ -66,5 +74,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+-- Undotree
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = 'Open undo tree window' })
 
 -- vim: ts=2 sts=2 sw=2 et
