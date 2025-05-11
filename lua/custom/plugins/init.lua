@@ -3,4 +3,5 @@ return {
   { import = 'custom.plugins.colorscheme' },
   { import = 'custom.plugins.harpoon' },
   { import = 'custom.plugins.undotree' },
+  { import = 'custom.plugins.vim-be-good' },
 }
