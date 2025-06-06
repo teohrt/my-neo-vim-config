@@ -78,4 +78,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- Undotree
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = 'Open undo tree window' })
 
+-- LSP error message helper - do it twice to copy the error
+vim.keymap.set('n', '<leader>e', function()
+  vim.diagnostic.open_float { focusable = true }
+end, { desc = "Expand an error you're hovering on into a float" })
+
 -- vim: ts=2 sts=2 sw=2 et
